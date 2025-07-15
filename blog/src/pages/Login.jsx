@@ -1,19 +1,70 @@
 
-
+"use client"
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import googleicon from '../assets/svg/google-icon.svg'
+import { useCurrentUserStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 function Login() {
+    const setCurrentUser=useCurrentUserStore((state)=>state.setCurrentUser)
+  const router=useRouter()
+    const [datas,setDatas]=useState({
+    
+      email:"",
+      password:""
+    })
+  
+    const handleChange=(e)=>{
+      const{name,value}=e.target
+  
+      setDatas((prev)=>({
+        ...prev,[name]:value
+      }))
+  
+  
+  
+    }
+  
+    const handleSubmit = async (e) => {
+    e.preventDefault()
+  
+    try {
+      const response = await axios.post('/api/auth/login', {
+        email: datas.email,
+        password: datas.password,
+      })
+  
+      console.log("response", response.data)
+  
+      // if (response.status === 201) {
+        alert("User login successfully!")
+        const user=response.data.user
+        setCurrentUser(user)
+        router.push('/')
+      // } else {
+      //   alert(response.data.message || "Login failed.")
+      // }
+  
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message)
+      alert(error.response?.data?.message || "Something went wrong.")
+    }
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form className=" px-8 pt-6 pb-8 w-full max-w-sm space-y-6">
+      <form 
+      onSubmit={handleSubmit}
+      className=" px-8 pt-6 pb-8 w-full max-w-sm space-y-6">
         <h2 className="text-2xl font-bold text-center text-gray-700">Sign In</h2>
 
         <div>
           <input
             type="email"
             placeholder="Email"
+            name="email"
+            onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -21,6 +72,8 @@ function Login() {
         <div>
           <input
             type="password"
+            name="password"
+            onChange={handleChange}
             placeholder="Password"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -50,7 +103,7 @@ function Login() {
         </div>
 
         <button
-          type="button"
+          type="submit"
           className="w-full border border-gray-300 hover:bg-gray-100 text-gray-800 font-medium py-2 px-4 rounded-md flex items-center justify-center gap-2 transition duration-200"
         >
           <Image src={googleicon} alt="Google logo" width={20} height={20} />

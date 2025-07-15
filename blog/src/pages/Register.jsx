@@ -6,7 +6,9 @@ import googleicon from '../assets/svg/google-icon.svg'
 import Navbar from '@/components/Navbar'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { useCurrentUserStore } from '@/lib/store'
 function Register() {
+  const setCurrentUser=useCurrentUserStore((state)=>state.setCurrentUser)
 const router=useRouter()
   const [datas,setDatas]=useState({
     name:"",
@@ -29,7 +31,7 @@ const router=useRouter()
   e.preventDefault()
 
   try {
-    const response = await axios.post('/api/auth', {
+    const response = await axios.post('/api/auth/register', {
       name: datas.name,
       email: datas.email,
       password: datas.password,
@@ -40,7 +42,7 @@ const router=useRouter()
     if (response.status === 201) {
       alert("User registered successfully!")
       const user=response.data.user
-      localStorage.setItem('user',JSON.stringify(user))
+      setCurrentUser(user)
       router.push('/')
     } else {
       alert(response.data.message || "Registration failed.")

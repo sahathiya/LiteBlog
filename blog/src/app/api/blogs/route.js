@@ -9,9 +9,3 @@ export async function GET() {
   return NextResponse.json(blogs)
 }
 
-// export async function POST(req) {
-//   await connectDB()
-//   const data = await req.json()
-//   const blog = await Blog.create(data)
-//   return NextResponse.json(blog)
-// }

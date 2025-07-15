@@ -1,16 +1,25 @@
 
+"use client"
 
 
-
+import { useCurrentUserStore } from "@/lib/store";
 import Link from "next/link";
 import React from "react";
 
 function Navbar() {
+  const currentUser=useCurrentUserStore((state)=>state.currentUser)
+  const setCurrentUser=useCurrentUserStore((state)=>state.setCurrentUser)
   const navItems = [
     { id: 1, label: "Home", link: "/" },
     { id: 2, label: "Blogs", link: "/blogs" },
   ];
 
+
+  console.log("currentUser",currentUser);
+  const handleLogout=()=>{
+    setCurrentUser(null)
+
+  }
   return (
     <nav className="w-full bg-white shadow-md px-6 py-4 fixed top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -32,11 +41,22 @@ function Navbar() {
             </Link>
           ))}
 
-          <Link href="/auth/register">
+{currentUser!==null?(
+ <div>
+   <div>{currentUser.name}</div>
+
+  <button onClick={handleLogout}>Logout</button>
+ </div>
+
+):(
+  <Link href="/auth/register">
             <button className="bg-black text-white font-semibold px-5 py-2 rounded-md transition duration-200 shadow-sm">
               Get Started
             </button>
           </Link>
+
+)}
+          
         </div>
       </div>
     </nav>
