@@ -5,6 +5,7 @@
 import { useCurrentUserStore } from "@/lib/store";
 import Link from "next/link";
 import React from "react";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const currentUser=useCurrentUserStore((state)=>state.currentUser)
@@ -18,7 +19,7 @@ function Navbar() {
   console.log("currentUser",currentUser);
   const handleLogout=()=>{
     setCurrentUser(null)
-
+toast.success('User Logout successfully')
   }
   return (
     <nav className="w-full bg-white shadow-md px-6 py-4 fixed top-0 z-50">

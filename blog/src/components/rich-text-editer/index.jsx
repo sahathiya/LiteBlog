@@ -37,7 +37,7 @@ function RichTextEditer({ content, onChange }) {
     onUpdate: ({ editor }) => {
       // console.log(editor.getHTML());
 
-      onChange(editor.getHTML());
+      onChange(editor.getText());
     },
   });
 

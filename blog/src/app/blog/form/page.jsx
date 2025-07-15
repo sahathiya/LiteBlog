@@ -1,4 +1,4 @@
-import AddBlog from '@/components/AddBlog'
+import AddBlog from '@/pages/AddBlog'
 import React from 'react'
 
 function page() {
