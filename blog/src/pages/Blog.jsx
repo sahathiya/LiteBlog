@@ -1,26 +1,18 @@
 
 "use client"
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { useBlogStore } from '@/lib/store'
 import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 function Blog() {
   const router=useRouter()
-    // const [blogs,setBlogs]=useState([])
+   
     const blogs=useBlogStore((state)=>state.blogs)
-   const setBlogs=useBlogStore((state)=>state.setBlogs)
-useEffect(()=>{
-const fetch=async()=>{
-    const response=await axios.get("/api/blogs")
-    console.log("response",response);
-    setBlogs(response.data)
-}
-fetch()
-
-},[])
+  
 
   return (
 
@@ -37,7 +29,9 @@ fetch()
         className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {blogs?.map((blog) => (
             <article key={blog._id} className="flex max-w-xl flex-col items-start justify-between">
-               <div className="flex items-center gap-x-4 text-xs rounded-md">
+               <div 
+                onClick={()=>router.push(`/blog/blogs/${blog._id}`)}
+               className="flex items-center gap-x-4 text-xs rounded-md">
   <Image
     src={blog.image ||""}
     alt="Blog image"
@@ -48,7 +42,7 @@ fetch()
 </div>
 
               <div 
-             onClick={()=>router.push(`/blog/blogs/${blog._id}`)}
+            
               className="flex items-center gap-x-4 text-xs">
                 <time dateTime={blog.createdAt} className="text-gray-500">
                   {blog.createdAt}
@@ -86,7 +80,14 @@ fetch()
         </div>
 
 
-
+<div className="flex justify-center mt-12">
+<button
+          onClick={() => router.back(-1)}
+          className="bg-black text-white font-semibold px-6 py-3 rounded-md transition duration-200 shadow"
+        >
+          Back
+        </button>
+</div>
 
       </div>
     </div>

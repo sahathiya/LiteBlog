@@ -3,9 +3,10 @@ import { useBlogStore } from '@/lib/store';
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
  function BlogDetails({ id }) {
- 
+ const router=useRouter()
   
   const blog = useBlogStore((state) => state.blog);
   const setBlog = useBlogStore((state) => state.setBlog);
@@ -80,7 +81,14 @@ import React, { useEffect } from 'react';
            </div>
          </article>
        </div>
-
+<div className="flex justify-center mt-12">
+<button
+          onClick={() => router.back(-1)}
+          className="bg-black text-white font-semibold px-6 py-3 rounded-md transition duration-200 shadow"
+        >
+          Back
+        </button>
+</div>
 
     </div>
   );

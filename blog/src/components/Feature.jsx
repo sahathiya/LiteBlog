@@ -6,9 +6,12 @@ import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import Count from "./CountUp";
 import { useRouter } from "next/navigation";
+import { useBlogStore } from "@/lib/store";
 
 function Feature() {
-  const [blogs, setBlogs] = useState([]);
+  const blogs=useBlogStore((state)=>state.blogs)
+  const setBlogs=useBlogStore((state)=>state.setBlogs)
+  // const [blogs, setBlogs] = useState([]);
   const router = useRouter();
   useEffect(() => {
     const fetch = async () => {
@@ -28,7 +31,7 @@ function Feature() {
       </div>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 border-t border-gray-200 pt-10 sm:grid-cols-2 lg:grid-cols-3">
-        {blogs.map((blog) => (
+        {blogs.slice(0,3).map((blog) => (
           <article
             key={blog._id}
             className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
@@ -84,7 +87,7 @@ function Feature() {
 
       <div className="flex justify-center mt-12">
         <button
-          onClick={() => router.push(`/blogs`)}
+          onClick={() => router.push(`/blog/blogs`)}
           className="bg-black text-white font-semibold px-6 py-3 rounded-md transition duration-200 shadow"
         >
           View all Blogs
