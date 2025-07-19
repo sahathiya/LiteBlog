@@ -5,6 +5,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
+
+
+// export async function generateMetadata(){
+//   const response = await axios.get(`/api/blogs/details/${id}`);
+//       console.log("response", response);
+//  const blog=response.data
+
+//       return{
+//         title:blog.title
+//       }
+// }
  function BlogDetails({ id }) {
  const router=useRouter()
   
@@ -31,7 +42,7 @@ import React, { useEffect } from 'react';
         >
            <div className="flex items-center gap-x-4 text-xs rounded-md">
             <Image
-              src={blog?.image || ""}
+              src={blog.image}
                alt="Blog image"
                width={300}
                height={200}

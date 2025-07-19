@@ -1,13 +1,13 @@
-import Blog from '@/pages/Blog'
+import About from '@/pages/About'
 import React from 'react'
 
 export const metadata={
-  title:"Blogs"
+  title:"About"
 }
 function page() {
   return (
     <div>
-      <Blog/>
+      <About/>
     </div>
   )
 }

@@ -12,7 +12,8 @@ function Navbar() {
   const setCurrentUser=useCurrentUserStore((state)=>state.setCurrentUser)
   const navItems = [
     { id: 1, label: "Home", link: "/" },
-    { id: 2, label: "Blogs", link: "/blogs" },
+    {id:2,label:"About",link:"/about"},
+    { id: 3, label: "Blogs", link: "/blog/blogs" },
   ];
 
 
