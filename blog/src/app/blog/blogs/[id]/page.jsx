@@ -12,11 +12,11 @@ import React from 'react'
 //     return {
 //       title: blog.title,
 //       description: blog.content?.slice(0, 150) || 'Blog post detail',
-//       // openGraph:{
-//       //   images:{
-//       //     url:post.image
-//       //   }
-//       // }
+//       openGraph:{
+//         images:{
+//           url:post.image
+//         }
+//       }
 //     };
 //   } catch (error) {
 //     console.error('Metadata fetch failed:', error);
