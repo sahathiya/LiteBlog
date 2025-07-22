@@ -10,9 +10,13 @@ import { useCurrentUserStore } from '@/lib/store'
 import { useFormik } from 'formik'
 import * as Yup from "yup";
 import { toast } from 'react-toastify'
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5'
 function Register() {
   const setCurrentUser=useCurrentUserStore((state)=>state.setCurrentUser)
 const router=useRouter()
+
+const[showPassword,setShowpassword]=useState(false)
+const[showCpassword,setShowCpassword]=useState(false)
 //   const [datas,setDatas]=useState({
 //     name:"",
 //     email:"",
@@ -164,9 +168,9 @@ const router=useRouter()
           /> */}
         </div>
 
-        <div>
+        <div className='relative'>
             <input
-            type="password"
+            type={showPassword?"text":"password"}
             placeholder="Password"
             name="password"
             onChange={formik.handleChange}
@@ -180,7 +184,13 @@ const router=useRouter()
             <p className="text-red-600 text-sm mt-1">{formik.errors.password}</p>
           )}
 
-          
+          <button
+                type="button"
+                onClick={() => setShowpassword(!showPassword)}
+                className="absolute top-[55%] right-3 -translate-y-1/2 cursor-pointer text-gray-500"
+              >
+                {showPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
+              </button>
           {/* <input
             type="password"
             name='password'
@@ -191,11 +201,11 @@ const router=useRouter()
           /> */}
         </div>
 
-          <div>
+          <div className='relative'>
 
 
             <input
-            type="password"
+            type={showCpassword?"text":"password"}
             placeholder="Confirm password"
             name="cpassword"
             onChange={formik.handleChange}
@@ -208,6 +218,14 @@ const router=useRouter()
           {formik.touched.cpassword && formik.errors.cpassword && (
             <p className="text-red-600 text-sm mt-1">{formik.errors.cpassword}</p>
           )}
+
+           <button
+                type="button"
+                onClick={() => setShowCpassword(!showCpassword)}
+                className="absolute top-[55%] right-3 -translate-y-1/2 cursor-pointer text-gray-500"
+              >
+                {showCpassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
+              </button>
           {/* <input
             type="password"
             name='cpassword'

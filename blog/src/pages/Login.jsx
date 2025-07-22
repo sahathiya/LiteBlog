@@ -133,11 +133,12 @@ import { useCurrentUserStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { useState } from "react";
 function Login() {
   const setCurrentUser = useCurrentUserStore((state) => state.setCurrentUser);
   const router = useRouter();
-
+ const[showPassword,setShowpassword]=useState(false)
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -186,9 +187,9 @@ function Login() {
           )}
         </div>
 
-        <div>
+        <div className="relative">
           <input
-            type="password"
+            type={showPassword?"text":"password"}
             placeholder="Password"
             name="password"
             onChange={formik.handleChange}
@@ -201,6 +202,15 @@ function Login() {
           {formik.touched.password && formik.errors.password && (
             <p className="text-red-600 text-sm mt-1">{formik.errors.password}</p>
           )}
+
+
+          <button
+      type="button"
+      onClick={() => setShowpassword(!showPassword)}
+      className="absolute top-[55%] right-3 -translate-y-1/2 cursor-pointer text-gray-500"
+    >
+      {showPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
+    </button>
         </div>
 
         <div className="flex items-center justify-between text-sm text-gray-600">
