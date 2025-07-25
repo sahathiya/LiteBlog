@@ -18,9 +18,14 @@ console.log("params",await params);
       description: blog.content?.slice(0, 150) || 'Blog post detail',
       
       openGraph:{
+        title:blog.title,
+        description:blog.content?.slice(0, 150) || 'Blog post detail',
        images:[
         {
-          url:blog.image
+          url:blog.image||"",
+          width: 800,
+          height: 600,
+          alt: blog.title,
         }
        ]
     
