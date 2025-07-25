@@ -30,13 +30,18 @@ export const metadata = {
    url:"https://lite-blog-sahathiyas-projects.vercel.app",
    siteName:"LiteBlog"
 
-  }
+  },
+  verification: {
+    google: 'LWiIorT8qhB7pLDgQE2fvxGBM6Dsd7q5VMnyOqIfcuQ', // Replace with your verification code
+  },
+  
 
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* <meta name="google-site-verification" content="LWiIorT8qhB7pLDgQE2fvxGBM6Dsd7q5VMnyOqIfcuQ" /> */}
       
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
