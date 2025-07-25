@@ -1,13 +1,13 @@
 
-import BlogDetails from '@/pages/BlogDetails'
+import BlogDetails from '@/components/BlogDetails'
 import axios from 'axios';
 
 import React from 'react'
 
 
 export async function generateMetadata({ params }) {
-
-    const response = await axios.get(`http://localhost:3000/api/blogs/details/${params.id}`);
+const baseurl=process.env.NEXT_PUBLIC_BASE_URL
+    const response = await axios.get(`${baseurl}/api/blogs/details/${params.id}`);
     const blog = response.data;
 console.log("params",await params);
 

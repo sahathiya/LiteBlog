@@ -27,7 +27,7 @@ export const metadata = {
    description: "Come and read awesome blogs",
    type:"website",
    locale:"en_US",
-   url:"https://lite-blog-sahathiyas-projects.vercel.app/",
+   url:"https://lite-blog-sahathiyas-projects.vercel.app",
    siteName:"LiteBlog"
 
   }
