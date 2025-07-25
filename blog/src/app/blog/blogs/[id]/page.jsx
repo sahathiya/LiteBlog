@@ -12,7 +12,7 @@ try {
   const blogId=params.id
   const baseurl=process.env.NEXT_PUBLIC_API_URL
 console.log("baseurl",baseurl,blogId);
-  const response = await axios.get(`/api/blogs/details/${params.id}`);
+  const response = await axios.get(`${baseurl}/api/blogs/details/${blogId}`);
     const blog = response.data;
 console.log("params",await params);
 
