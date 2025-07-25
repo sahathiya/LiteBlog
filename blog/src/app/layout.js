@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase:new URL("https://lite-blog-sahathiyas-projects.vercel.app/"),
+  metadataBase:new URL("https://lite-blog-nine.vercel.app"),
   title:{
     default:"LiteBlog-Your Words Your Space",
     template:"%s - LiteBlog"
@@ -27,7 +27,7 @@ export const metadata = {
    description: "Come and read awesome blogs",
    type:"website",
    locale:"en_US",
-   url:"https://lite-blog-sahathiyas-projects.vercel.app",
+   url:"https://lite-blog-nine.vercel.app",
    siteName:"LiteBlog"
 
   },
