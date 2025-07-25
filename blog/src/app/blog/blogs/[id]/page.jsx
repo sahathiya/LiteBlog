@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
 const baseurl=process.env.NEXT_PUBLIC_BASE_URL
 console.log("baseurl",baseurl);
 
-    const response = await axios.get(`${baseurl}/api/blogs/details/${params.id}`);
+    const response = await axios.get(`/api/blogs/details/${params.id}`);
     const blog = response.data;
 console.log("params",await params);
 
