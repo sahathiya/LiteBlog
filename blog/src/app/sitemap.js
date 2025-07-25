@@ -1,38 +1,3 @@
-
-
-// export default async function sitemap(){
-
-//     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`);
-//     const data = await response.json(); // ✅ Correct
-// const blogs = data.blogs || []; // Use fallback if blogs is undefined
-
-
-//     const blogUrls=blogs.map(({id})=>({
-//         url:`${process.env.NEXT_PUBLIC_API_URL}/blog/blogs/${id}`,
-//         lastModified:new Date()
-//     }))
-//     return[
-//         {
-//             url:process.env.NEXT_PUBLIC_API_URL,
-//             lastModified:new Date()
-//         },
-
-//            {
-//             url:`${process.env.NEXT_PUBLIC_API_URL}/about`,
-//             lastModified:new Date()
-//         },
-//            {
-//             url:`${process.env.NEXT_PUBLIC_API_URL}/blog/blogs`,
-//             lastModified:new Date()
-//         },
-//         ...blogUrls
-
-
-//     ]
-
-// }
-
-
 export default async function sitemap() {
    
 
