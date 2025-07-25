@@ -33,13 +33,17 @@ import React, { useEffect } from 'react';
            className="flex max-w-xl flex-col items-start justify-between"
         >
            <div className="flex items-center gap-x-4 text-xs rounded-md">
-            <Image
-              src={blog?.image}
-               alt="Blog image"
-               width={300}
-               height={200}
-               className="rounded-md object-cover"
-             />
+           
+             {blog?.image && (
+  <Image
+    src={blog.image}
+    alt="Blog image"
+    width={300}
+    height={200}
+    className="rounded-md object-cover"
+  />
+)}
+
            </div>
 
            <div className="flex items-center gap-x-4 text-xs">
@@ -65,13 +69,18 @@ import React, { useEffect } from 'react';
              </p>
            </div>
            <div className="relative mt-8 flex items-center gap-x-4">
-             <Image
+            
+
+             {blog?.profileImage && (
+              <Image
                alt="author"
                src={blog?.profileImage}
                className="size-10 rounded-full bg-gray-50"
                width={10}
                height={10}
              />
+)}
+
              <div className="text-sm/6">
                <p className="font-semibold text-gray-900">
                  <Link href="">
