@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Head from "next/head";
 
 
 const geistSans = Geist({
@@ -30,10 +31,7 @@ export const metadata = {
    url:"https://lite-blog-nine.vercel.app",
    siteName:"LiteBlog"
 
-  },
-  verification: {
-    google: 'LWiIorT8qhB7pLDgQE2fvxGBM6Dsd7q5VMnyOqIfcuQ', // Replace with your verification code
-  },
+  }
   
 
 };
@@ -41,7 +39,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <meta name="google-site-verification" content="LWiIorT8qhB7pLDgQE2fvxGBM6Dsd7q5VMnyOqIfcuQ" /> */}
+      <Head>
+ <meta name="google-site-verification" content="LWiIorT8qhB7pLDgQE2fvxGBM6Dsd7q5VMnyOqIfcuQ" />
+      </Head>
+     
       
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
