@@ -96,7 +96,7 @@ const[showCpassword,setShowCpassword]=useState(false)
         });
         toast.success("User Register successfully!");
         setCurrentUser(response.data.user);
-        router.push("/");
+        router.push("/home");
       } catch (error) {
         console.error("Register error:", error.response?.data || error.message);
         toast.error(error.response?.data?.message || "Something went wrong.");

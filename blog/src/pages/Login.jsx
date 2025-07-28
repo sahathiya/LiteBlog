@@ -155,7 +155,7 @@ function Login() {
         const response = await axios.post("/api/auth/login", values);
         toast.success("User login successfully!");
         setCurrentUser(response.data.user);
-        router.push("/");
+        router.push("/home");
       } catch (error) {
         console.error("Login error:", error.response?.data || error.message);
         toast.error(error.response?.data?.message || "Something went wrong.");
