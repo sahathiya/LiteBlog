@@ -5,7 +5,6 @@
 
 import Navbar from '@/components/Navbar'
 import Subscribe from '@/components/Subscribe'
-import { BlurText } from '@/styles/text'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'

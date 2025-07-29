@@ -133,7 +133,7 @@ import React, { useEffect } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Subscribe from "./Subscribe";
-
+import { Eye, MessageCircle, Calendar } from 'lucide-react';
 function BlogDetails({ id }) {
   const blog = useBlogStore((state) => state.blog);
   const setBlog = useBlogStore((state) => state.setBlog);
@@ -162,8 +162,8 @@ function BlogDetails({ id }) {
     <div className="bg-gray-50 text-gray-800">
       <Navbar />
 
-      {/* Header */}
-      <div className="text-center pt-10 md:pt-24 px-4">
+      
+      {/* <div className="text-center pt-10 md:pt-24 px-4">
         <p className="text-sm md:text-base text-green-600 font-medium">
           {new Date(blog?.createdAt).toLocaleDateString("en-US", {
             day: "2-digit",
@@ -173,7 +173,7 @@ function BlogDetails({ id }) {
         </p>
         <h1 className="font-bold text-3xl md:text-5xl mt-4">{blog?.title}</h1>
 
-        {/* Author */}
+        
         <div className="flex justify-center items-center gap-4 mt-6">
           <img
             className="w-12 h-12 rounded-full object-cover"
@@ -192,7 +192,7 @@ function BlogDetails({ id }) {
         </div>
       </div>
 
-      {/* Image */}
+     
       {blog?.image && (
         <div className="max-w-6xl mx-auto mt-10 px-4">
           <Image
@@ -205,7 +205,7 @@ function BlogDetails({ id }) {
         </div>
       )}
 
-      {/* Content */}
+     
       <div className="max-w-4xl mx-auto mt-16 px-4 md:px-0">
         <div
           className=" p-6 md:p-12 text-lg md:text-xl leading-relaxed"
@@ -213,34 +213,77 @@ function BlogDetails({ id }) {
         >
           <p>{blog?.content}</p>
         </div>
-      </div>
-
-      
-
-             {/* <div className="container font-sans bg-gray-100 rounded mt-8 p-4 md:p-24 text-center">
-         <h2 className="font-bold break-normal text-2xl md:text-4xl">
-           Subscribe to LiteBlog
-         </h2>         <h3 className="font-bold break-normal  text-gray-600 text-base md:text-xl">
-           Get the latest blogs delivered right to your inbox
-         </h3>
-         <div className="w-full text-center pt-4">
-           <form action="#">
-            <div className="max-w-sm mx-auto p-1 pr-0 flex flex-wrap items-center">
-               <input
-                type="email"
-                placeholder="youremail@example.com"
-                className="flex-1 appearance-none rounded shadow p-3 text-gray-600 mr-2 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="flex-1 mt-4 md:mt-0 block md:inline-block appearance-none bg-black text-white text-base font-semibold tracking-wider uppercase py-4 rounded shadow hover:bg-green-400"
-              >
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div>
       </div> */}
+
+      <div className="max-w-2xl mx-auto p-6 font-sans">
+      {/* Title */}
+      <h1 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">
+       {blog?.title}
+      </h1>
+      
+      {/* Author and metadata section */}
+      <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
+        <div className="flex items-center space-x-3">
+          {/* Author avatar */}
+          <div className="w-10 h-10 rounded-full  flex items-center justify-center  font-semibold text-sm">
+               <img
+            className="w-10 h-10 rounded-full object-cover"
+            src={blog?.profileImage || "https://i.pravatar.cc/100"}
+            alt="Author"
+          />
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">By <span className="text-gray-900 font-medium">{blog.author}</span></p>
+          </div>
+        </div>
+        
+        {/* Metadata */}
+        <div className="flex items-center space-x-4 text-sm text-gray-500">
+          <div className="flex items-center space-x-1">
+            <Calendar className="w-4 h-4" />
+            <span>{new Date(blog?.createdAt).toLocaleDateString("en-US", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          })}</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <MessageCircle className="w-4 h-4" />
+            <span>05</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Eye className="w-4 h-4" />
+            <span>05</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Content */}
+      <div className="space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          {blog.content}
+        </p>
+        
+        {/* Image */}
+        <div className="my-6">
+          <img 
+            src={blog.image}
+            className="w-full h-64 object-cover rounded-lg"
+          />
+        </div>
+        
+        <p>
+          There's a time and place for everything... including asking for reviews. For instance: you should not asking for a 
+          review on your checkout page. The sole purpose of this page is to guide your customer to complete their 
+          purchase, and this means that the page should be as minimalist and pared-down possible. You don't want to 
+          have any unnecessary elements or Call To Actions.
+        </p>
+        
+     
+      </div>
+    </div>
+
+            
       <Subscribe/>
 
       <Footer />
